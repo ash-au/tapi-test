@@ -6,7 +6,7 @@ var url = 'https://slot2.apipractice.t-dev.telstra.net/v2/messages/sms';
 
 var options = {
     headers: {
-        'Authorization': 'Bearer bDCf51WV2V4f0SY7SkB9vRIbgrVz'
+        'Authorization': 'Bearer 5qgWrypc3sIDpFQ6Eh3Hz7LKIEQ0'
     }
 };
 var to = "0418120253";
