@@ -18,18 +18,18 @@ var s_data = { "to": to, "body": body, "notifyURL": notifyURL };
 
 describe("Messaging API Test", function () {
     it("Should be able to send SMS", function () {
-    return chakram.post(url, s_data, options)
+        return chakram.post(url, s_data, options)
             .then(function (apiResponse) {
                 var responseBody = apiResponse.body;
                 //console.log(responseBody);
-                
+
                 var stringResponse = JSON.stringify(responseBody);
                 var messageId = responseBody.messages[0].messageId;
                 var deliveryStatus = responseBody.messages[0].deliveryStatus;
                 //console.log(deliveryStatus);
-                
+
                 //console.log("Message ID from API Response: " + messageId);
-                
+
                 expect(apiResponse).to.have.status(201);
                 expect(stringResponse).to.contain("MessageWaiting");
                 fs.writeFile('random.db', messageId, function (err) {
@@ -42,7 +42,7 @@ describe("Messaging API Test", function () {
             })
         // .then(function (binResponse) {
         //     var checkMessageId = messageId.replace('-', '/');
-        //     console.log("Message ID from API Response: "+ checkMessageId);                
+        //     console.log("Message ID from API Response: "+ checkMessageId);
         //     var responseBody = binResponse.body[0].body;
         //     var responseJSON = JSON.parse(responseBody);
         //     var requestBinMessageId = responseJSON.messageId;
@@ -55,11 +55,11 @@ describe("Messaging API Test", function () {
     });
     it("Testing impossible delivery", function () {
         var s_data = { "to": "0472880996", "body": body, "notifyURL": notifyURL };
-        
+
         return chakram.post(url, s_data, options)
             .then(function (apiResponse) {
                 var responseBody = apiResponse.body;
-                
+
                 var stringResponse = JSON.stringify(responseBody);
                 var messageId = responseBody.messages[0].messageId;
                 var deliveryStatus = responseBody.messages[0].deliveryStatus;
@@ -70,6 +70,4 @@ describe("Messaging API Test", function () {
                 return chakram.wait();
             })
     });
-
 });
-

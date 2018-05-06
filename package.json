@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --delay",
+    "check": "mocha test/testCheck"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "chakram": "^1.5.0",
     "grunt-cli": "^1.2.0"
+  },
+  "dependencies": {
+    "dotenv": "^4.0.0"
   }
 }
